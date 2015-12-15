@@ -1,0 +1,10 @@
+#pragma once
+void InitTIM3GPIO(void);
+void DeInitTIM3GPIO(void);
+void InitTIM3(void);
+void InitClocks(void);
+void SelectHSI(void);
+void Sleep(void);
+void InitAudioGPIO(void);
+void InitButtonGPIO(void);
+void InitWkupGPIO(void);
