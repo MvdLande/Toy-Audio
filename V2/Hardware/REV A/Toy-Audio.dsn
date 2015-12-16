@@ -1,4 +1,4 @@
-(pcb "C:\Users\mauri\OneDrive\Hobby\Projects\Kicad\Toys\Toy-Audio\REV C\Toy-Audio.dsn"
+(pcb "C:\Users\mauri\OneDrive\Hobby\Projects\Kicad\Toys\Toy-Audio\V2\Hardware\REV A\Toy-Audio.dsn"
   (parser
     (string_quote ")
     (space_in_quoted_tokens on)
@@ -34,27 +34,27 @@
   )
   (placement
     (component MvdL:C0603
-      (place C6 103000 -102000 back 0 (PN 1u))
-      (place C7 108000 -98000 back 90 (PN 10u))
-      (place C8 103750 -93750 front 270 (PN 47n))
-      (place C10 100250 -96750 back 0 (PN 2.2uF))
+      (place C6 107750 -97750 back 270 (PN 1u))
+      (place C7 112600 -92200 back 0 (PN 10u))
+      (place C8 102250 -96000 front 180 (PN 47n))
+      (place C10 100750 -97750 back 0 (PN 2.2uF))
       (place C1 101000 -89900 back 180 (PN 1u))
       (place C2 101000 -94250 front 0 (PN 390nF))
     )
     (component "MvdL:SOD-123"
-      (place D1 100000 -100250 back 90 (PN MBR0520LT1G))
+      (place D1 101250 -101500 back 0 (PN MBR0520LT1G))
     )
     (component MvdL:R0603
-      (place R3 105000 -92250 back 0 (PN 1k8))
+      (place R3 105000 -92250 back 0 (PN 910R))
       (place R1 107200 -102000 front 180 (PN 100k))
       (place R2 118500 -93250 back 90 (PN 470R))
       (place R4 118500 -93250 front 270 (PN 470R))
-      (place R5 105250 -93750 front 90 (PN 1k8))
+      (place R5 102250 -97750 front 0 (PN D.N.P))
       (place R6 101000 -92500 front 180 (PN 20k))
       (place R7 101000 -90000 front 0 (PN 20k))
     )
     (component MvdL:SOT23
-      (place U1 102750 -98500 back 270 (PN XC6206P332MR))
+      (place U1 104750 -97750 back 270 (PN XC6206P332MR))
     )
     (component "MvdL:HDR-01X4-RM2"
       (place J2 104500 -90250 front 0 (PN CONN_01X04))
@@ -70,7 +70,7 @@
       (place J5 116000 -101500 front 90 (PN CONN_01X04))
     )
     (component "myfootprints VDL:SSOP-8"
-      (place U4 100500 -93250 back 90 (PN TS4890))
+      (place U4 100750 -93750 back 90 (PN TS4890))
     )
     (component MvdL:HDR_01x03_RM2.54
       (place J3 118500 -101500 front 90 (PN CONN_01X03))
@@ -79,7 +79,7 @@
       (place J4 114250 -90250 front 0 (PN CONN_01X03))
     )
     (component MvdL:TSSOP20
-      (place U2 110500 -97250 front 0 (PN STM32F030F4P6))
+      (place U2 110500 -97000 front 0 (PN STM32F030F4P6))
     )
   )
   (library
@@ -407,23 +407,21 @@
     (net "Net-(R6-Pad1)"
       (pins R6-1 R7-2 U4-4)
     )
-    (net "Net-(R7-Pad1)"
-      (pins R7-1 SP1-1 U4-5)
-    )
-    (net "Net-(SP1-Pad2)"
-      (pins SP1-2 U4-8)
-    )
     (net /nHOLD
       (pins U3-7 U2-3)
     )
     (net /nMUTE
       (pins U4-1 U2-7)
     )
+    (net /SP+
+      (pins R7-1 SP1-1 U4-5)
+    )
+    (net "/SP-"
+      (pins SP1-2 U4-8)
+    )
     (class kicad_default "" /LED /MISO1 /MOSI1 /PWM /SCK1 /SCL1 /SDA1 /SWCLK
-      /SWDIO /UART2_EN /USART1_RX /USART1_TX /USART2_CK /USART2_CTS /USART2_RTS
-      /USART2_RX /USART2_TX /WKUP1 /nCS /nHOLD /nMUTE "/~CS-FL" "Net-(C1-Pad1)"
-      "Net-(C2-Pad1)" "Net-(C2-Pad2)" "Net-(C5-Pad1)" "Net-(C8-Pad1)" "Net-(C8-Pad2)"
-      "Net-(J3-Pad2)" "Net-(J3-Pad3)" "Net-(R6-Pad1)" "Net-(R7-Pad1)" "Net-(SP1-Pad2)"
+      /SWDIO /USART1_RX /USART1_TX /WKUP1 /nCS /nHOLD /nMUTE "Net-(C1-Pad1)"
+      "Net-(C2-Pad1)" "Net-(C2-Pad2)" "Net-(J3-Pad2)" "Net-(J3-Pad3)" "Net-(R6-Pad1)"
       "Net-(U2-Pad4)"
       (circuit
         (use_via Via[0-1]_609.6:304.8_um)
@@ -433,7 +431,8 @@
         (clearance 152.5)
       )
     )
-    (class PWR GND "Net-(D1-PadA)" VCC VDD
+    (class PWR /SP+ "/SP-" GND "Net-(D1-PadA)" "Net-(R7-Pad1)" "Net-(SP1-Pad2)"
+      VCC VDD
       (circuit
         (use_via Via[0-1]_609.6:304.8_um)
       )

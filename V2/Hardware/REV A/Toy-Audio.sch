@@ -38,7 +38,7 @@ encoding utf-8
 Sheet 1 1
 Title "Toy audio"
 Date "5 aug 2015"
-Rev "C"
+Rev "A"
 Comp ""
 Comment1 ""
 Comment2 ""
@@ -901,4 +901,8 @@ Wire Wire Line
 	2550 1700 2550 1800
 Text Notes 6050 4700 0    60   ~ 0
 D.N.P = Do Not Populate
+Text Label 8800 4200 0    60   ~ 0
+SP+
+Text Label 8800 4400 0    60   ~ 0
+SP-
 $EndSCHEMATC
