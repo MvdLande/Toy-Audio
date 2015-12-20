@@ -167,6 +167,15 @@ void Standby(void)
 {
 	uint32_t i;
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR, ENABLE); 
+	InitButtonGPIO();
+	//DeInitTIM3GPIO();
+	while ((GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == Bit_SET))
+		;  //wait
+	SysTick->CTRL  |= SysTick_CTRL_ENABLE_Msk; // start systick timer
+	Delay(200); // wait for button to debounce
+		// disable systick timer
+	SysTick->CTRL  &= ~SysTick_CTRL_ENABLE_Msk; //stop systick timer
+	
 	//RCC_APB1PeriphClockCmd(RCC_APB2Periph_DBGMCU, ENABLE); 
 	
 	//PWR_ClearFlag(PWR_FLAG_SB);
@@ -219,7 +228,7 @@ int main()
 	//sFLASH_Init();
 	//sFLASH_BitBangInit();
 	//InitUSART1();
-	DeInitTIM3GPIO();
+	
 
 /*
 	for (;;)
@@ -287,7 +296,7 @@ int main()
 				}	
 				if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == Bit_SET)
 				{
-					if (i == 24000)	// 3 seconds
+					if (i == 20000)	// 2.5 seconds
 					{
 						//stop playing
 						if (State == playing1)
@@ -338,6 +347,7 @@ int main()
 			};
 			//Delay(1);
 			//RCC_LSICmd(DISABLE);
+			DeInitTIM3GPIO();
 			Standby();
 		}
 		
