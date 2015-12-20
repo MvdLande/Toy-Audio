@@ -167,35 +167,37 @@ void Standby(void)
 {
 	uint32_t i;
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR, ENABLE); 
+	//RCC_APB1PeriphClockCmd(RCC_APB2Periph_DBGMCU, ENABLE); 
 	
-	PWR_ClearFlag(PWR_FLAG_SB);
+	//PWR_ClearFlag(PWR_FLAG_SB);
 	// Check if the StandBy flag is cleared 
-	if (PWR_GetFlagStatus(PWR_FLAG_SB) != RESET)
-	{
-		while (1)
-			;
-	}
+	//if (PWR_GetFlagStatus(PWR_FLAG_SB) != RESET)
+	//{
+	//	while (1)
+	//		;
+	//}
 	
+	/*
 	// Enable the LSI OSC 
 	RCC_LSICmd(ENABLE);
 	// Wait till LSI is ready 
 	while (RCC_GetFlagStatus(RCC_FLAG_LSIRDY) == RESET)
 	{}
-	
-	InitWkupGPIO();
+	*/
+	//InitWkupGPIO(); // not needed
 	//RTC_DeInit();
 
-	PWR_WakeUpPinCmd(PWR_WakeUpPin_1 | PWR_WakeUpPin_2, DISABLE);
-	DBGMCU_Config(DBGMCU_STANDBY, ENABLE); //enable debugging during standy mode
+	//PWR_WakeUpPinCmd(PWR_WakeUpPin_1 | PWR_WakeUpPin_2, DISABLE);
+	//DBGMCU_Config(DBGMCU_STANDBY, ENABLE); //enable debugging during standy mode
 	PWR_ClearFlag(PWR_FLAG_WU | PWR_FLAG_SB);
 	//PWR->CR |= PWR_CR_CWUF;
-	RTC_ClearFlag(RTC_FLAG_ALRAF);
+	//RTC_ClearFlag(RTC_FLAG_ALRAF);
 	PWR_WakeUpPinCmd(PWR_WakeUpPin_1, ENABLE);
 	//for (i = 0; i++; i < 5000)
 	//	;
 	PWR_EnterSTANDBYMode();
-
-	InitButtonGPIO();
+	// the device will be reset when exiting standby mode
+	//InitButtonGPIO();
 }
 
 
@@ -222,13 +224,48 @@ int main()
 /*
 	for (;;)
 	{
+		//load music to spi flash
 		Main_Menu();
 	}
 */
-	
+	//RTC_RefClockCmd(ENABLE); // The RTC registers are used to store the song status
+	  /* Enable the PWR clock */
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR, ENABLE);
+	  /* Disable the write protection for RTC registers */
+	  /* Allow access to RTC */
+	PWR_BackupAccessCmd(ENABLE);
+	/*
+    //Enter RTC Init mode
+	RTC->ISR = 0; 
+	RTC->ISR |= RTC_ISR_INIT; 
+	while ((RTC->ISR & RTC_ISR_INITF) == 0)
+		;
+	// Set 24-h clock
+	RTC->CR |= RTC_CR_FMT; 
+*/
+
+	/*
+	RCC_LSICmd(ENABLE);
+	// Wait till LSI is ready 
+	while (RCC_GetFlagStatus(RCC_FLAG_LSIRDY) == RESET)
+	{
+	}
+	RCC_RTCCLKConfig(RCC_RTCCLKSource_LSI);
+	RCC_RTCCLKCmd(ENABLE);
+	RTC_WriteProtectionCmd(DISABLE);
+	RTC_EnterInitMode();
+	// Wait for RTC APB registers synchronisation 
+	//RTC_WaitForSynchro();
+	*/
+	Delay(100);
+	//RTC->CR |= RTC_CR_FMT;
+	//Delay(1);
 	i = 0;
-	State = waitingfor1; // enlish song
-	
+	if ((RTC->CR & RTC_CR_FMT) == RTC_CR_FMT)
+		State = waitingfor1; // Enlish song
+	else
+		State = waitingfor2; // Dutch song
+	//RCC_RTCCLKCmd(DISABLE);
 	for (;;)
 	{
 		if (WAV_DataPending == 1)
@@ -250,7 +287,7 @@ int main()
 				}	
 				if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == Bit_SET)
 				{
-					if (i == 16000)	// 2 seconds
+					if (i == 24000)	// 3 seconds
 					{
 						//stop playing
 						if (State == playing1)
@@ -258,7 +295,7 @@ int main()
 						if (State == playing2)
 							State = played2;
 					}
-					if (i == 2000)	// 0,25 seconds
+					if (i == 1500)	// 
 					{
 						//next
 						if (State == playing1)
@@ -284,16 +321,29 @@ int main()
 	
 		if (State == played1 || State == played2)
 		{
+			//uint32_t temp;
 			WAV_DataPending = 0;  
+			RTC_EnterInitMode();
+			//temp = (RTC->CR)&(~(RTC_CR_WUCKSEL_0 | RTC_CR_WUCKSEL_1));
 			if (State == played1)
+			{
 				State = waitingfor2;
+				RTC->CR &= ~RTC_CR_FMT;				
+			}
+
 			if (State == played2)
+			{
 				State = waitingfor1;
+				RTC->CR |= RTC_CR_FMT;				
+			};
+			//Delay(1);
+			//RCC_LSICmd(DISABLE);
+			Standby();
 		}
 		
 		if (State == waitingfor1 || State == waitingfor2)
 		{
-			Stop();	// goto stop mode, wait for trigger event
+			//Stop();	// goto stop mode, wait for trigger event
 			if (State == waitingfor1)
 				State = start1;
 			if (State == waitingfor2)
@@ -400,7 +450,7 @@ void DeInitTIM3GPIO(void)
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP; 
-	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 	// Turn Speaker off

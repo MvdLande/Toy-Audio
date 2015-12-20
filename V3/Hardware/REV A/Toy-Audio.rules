@@ -1,0 +1,95 @@
+
+(rules PCB Toy-Audio
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 10)
+    (plane_via_costs 5)
+    (start_ripup_costs 50)
+    (start_pass_no 1542)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.0)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.0)
+    )
+  )
+  (rule
+    (width 152.4)
+    (clear 152.6)
+    (clear 76.2 (type smd_to_turn_gap))
+    (clear 38.2 (type smd_smd))
+  )
+  (padstack "Via[0-1]_609.6:304.8_um"
+    (shape
+      (circle F.Cu 609.6 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 609.6 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_609.6:304.8_um" "Via[0-1]_609.6:304.8_um" default
+  )
+  (via 
+    "Via[0-1]_609.6:304.8_um-kicad_default" "Via[0-1]_609.6:304.8_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_609.6:304.8_um-PWR" "Via[0-1]_609.6:304.8_um" PWR
+  )
+  (via_rule
+    default "Via[0-1]_609.6:304.8_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_609.6:304.8_um-kicad_default"
+  )
+  (via_rule
+    PWR "Via[0-1]_609.6:304.8_um-PWR"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 152.4)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    /SWCLK /SWDIO /SDA1 /SCL1 /SCK1 /MISO1 /MOSI1 "Net-(C1-Pad1)"
+    "Net-(C2-Pad1)" "Net-(C2-Pad2)" "Net-(J3-Pad2)" "Net-(J3-Pad3)" "/USART1_TX" "/USART1_RX" /nCS /WKUP1
+    /LED "Net-(R6-Pad1)" /nHOLD /nMUTE /LATCH /nCS2
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 152.4)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class PWR
+    GND VCC VDD "Net-(D1-PadA)" /SP+ "/SP-"
+    (clearance_class PWR)
+    (via_rule PWR)
+    (rule
+      (width 254.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)

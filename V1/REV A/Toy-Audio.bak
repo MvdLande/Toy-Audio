@@ -36,10 +36,10 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title "K3 microfoon printplaat"
+Title "Toy Audio V1"
 Date "5 aug 2015"
 Rev "A"
-Comp ""
+Comp "Maurits van de Lande (maurits@vandelande.com)"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -347,7 +347,7 @@ L SPEAKER SP1
 U 1 1 55EC5935
 P 10000 3600
 F 0 "SP1" H 9800 3900 60  0000 C CNN
-F 1 "8Ohm" H 9800 3300 60  0000 C CNN
+F 1 "16Ohm" H 9800 3300 60  0000 C CNN
 F 2 "MvdL:JST-PH-2P-DUAL" H 10000 3600 60  0001 C CNN
 F 3 "~" H 10000 3600 60  0000 C CNN
 	1    10000 3600
@@ -760,8 +760,50 @@ Wire Wire Line
 	1400 3950 1400 3550
 Wire Wire Line
 	1400 3550 1600 3550
-Text Notes 9450 2700 0    60   ~ 0
-HPF with 4KHz cutoff to filter \nout the PWM base frequency
+Text Notes 9150 2500 0    60   ~ 0
+Optional HPF with 4KHz cutoff to filter \nout the PWM base frequency
 Text Notes 9500 4300 0    60   ~ 0
 d.n.p. = do not place
+Text Notes 1900 4850 0    60   ~ 0
+3V
+Wire Notes Line
+	2650 4850 2650 4600
+Wire Notes Line
+	2650 4600 3550 4600
+Wire Notes Line
+	3550 4600 3550 4850
+Text Notes 2200 4450 0    60   ~ 0
+Do not place U1 when using 3V battery power\nbypass pin 2 and 3
+Wire Notes Line
+	8875 4100 8875 4150
+Wire Notes Line
+	8875 4150 8925 4175
+Wire Notes Line
+	8925 4175 8825 4200
+Wire Notes Line
+	8825 4200 8925 4225
+Wire Notes Line
+	8925 4225 8825 4250
+Wire Notes Line
+	8825 4250 8925 4275
+Wire Notes Line
+	8925 4275 8825 4300
+Wire Notes Line
+	8825 4300 8925 4325
+Wire Notes Line
+	8925 4325 8825 4350
+Wire Notes Line
+	8825 4350 8925 4375
+Wire Notes Line
+	8925 4375 8875 4400
+Wire Notes Line
+	8875 4400 8875 4425
+Wire Notes Line
+	8825 4425 8925 4425
+Wire Notes Line
+	8825 4425 8875 4475
+Wire Notes Line
+	8875 4475 8925 4425
+Text Notes 8650 4325 0    60   ~ 0
+47k
 $EndSCHEMATC
