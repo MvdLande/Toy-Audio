@@ -117,7 +117,7 @@ void SelectHSI(void)
 void Stop(void)
 {
 	InitButtonGPIO();
-	GPIO_ResetBits(GPIOA, GPIO_Pin_4);  //disable audio amp
+	GPIO_ResetBits(GPIOF, GPIO_Pin_1);  //disable audio amp
 	GPIO_SetBits(GPIOF, GPIO_Pin_0);  //deselect SPI Flash
 	DeInitTIM3GPIO();
 	while ((GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == Bit_SET))
@@ -419,16 +419,16 @@ void InitAudioGPIO(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	
-	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOF, ENABLE);
   
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP; 
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
-	GPIO_Init(GPIOA, &GPIO_InitStructure);
+	GPIO_Init(GPIOF, &GPIO_InitStructure);
 	
-	GPIO_ResetBits(GPIOA, GPIO_Pin_4);  //disable audio amp
+	GPIO_ResetBits(GPIOF, GPIO_Pin_1);  //disable audio amp
 
 	
 }
@@ -448,7 +448,7 @@ void InitTIM3GPIO(void)
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 	GPIO_PinAFConfig(GPIOB, GPIO_PinSource1, GPIO_AF_1);
 	// Turn Speaker on
-	GPIO_SetBits(GPIOA, GPIO_Pin_4);
+	GPIO_SetBits(GPIOF, GPIO_Pin_1);
 	
 }
 void DeInitTIM3GPIO(void)
@@ -464,7 +464,7 @@ void DeInitTIM3GPIO(void)
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 	// Turn Speaker off
-	//GPIO_ResetBits(GPIOA, GPIO_Pin_4);
+	GPIO_ResetBits(GPIOF, GPIO_Pin_1);
 
 }
 			  

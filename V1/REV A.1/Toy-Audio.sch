@@ -47,9 +47,9 @@ Comment4 ""
 $EndDescr
 Text Notes 1250 3150 0    60   ~ 0
 STLink SWD Interface
-Text Label 6800 2450 0    60   ~ 0
+Text Label 7375 2475 0    60   ~ 0
 SCL1
-Text Label 6800 2350 0    60   ~ 0
+Text Label 7375 2375 0    60   ~ 0
 SDA1
 $Comp
 L CONN_2 J1
@@ -85,7 +85,7 @@ F 3 "~" H 6250 4550 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 5450 4300 0    60   ~ 0
-~CS-FL
+~CS0
 Text Notes 1250 4850 0    60   ~ 0
 Battery Power
 Text Label 1050 3750 0    60   ~ 0
@@ -241,37 +241,37 @@ F 3 "" H 5050 4800 60  0000 C CNN
 	1    5050 4800
 	1    0    0    -1  
 $EndComp
-Text Label 6800 2150 0    60   ~ 0
+Text Label 7375 2175 0    60   ~ 0
 USART1_TX
-Text Label 6800 2050 0    60   ~ 0
+Text Label 7375 2075 0    60   ~ 0
 USART1_RX
-Text Label 6800 1950 0    60   ~ 0
+Text Label 7375 1975 0    60   ~ 0
 USART1_CK
-Text Label 6800 1750 0    60   ~ 0
-UART1_EN
+Text Label 7375 1775 0    60   ~ 0
+~Mute
 $Comp
 L GND #PWR21
 U 1 1 55E01A86
-P 7500 2550
-F 0 "#PWR21" H 7500 2300 50  0001 C CNN
-F 1 "GND" H 7500 2400 50  0000 C CNN
-F 2 "" H 7500 2550 60  0000 C CNN
-F 3 "" H 7500 2550 60  0000 C CNN
-	1    7500 2550
+P 8075 2575
+F 0 "#PWR21" H 8075 2325 50  0001 C CNN
+F 1 "GND" H 8075 2425 50  0000 C CNN
+F 2 "" H 8075 2575 60  0000 C CNN
+F 3 "" H 8075 2575 60  0000 C CNN
+	1    8075 2575
 	1    0    0    -1  
 $EndComp
 $Comp
 L VDD #PWR20
 U 1 1 55E01CC1
-P 7400 1550
-F 0 "#PWR20" H 7400 1400 50  0001 C CNN
-F 1 "VDD" H 7400 1700 50  0000 C CNN
-F 2 "" H 7400 1550 60  0000 C CNN
-F 3 "" H 7400 1550 60  0000 C CNN
-	1    7400 1550
+P 7975 1575
+F 0 "#PWR20" H 7975 1425 50  0001 C CNN
+F 1 "VDD" H 7975 1725 50  0000 C CNN
+F 2 "" H 7975 1575 60  0000 C CNN
+F 3 "" H 7975 1575 60  0000 C CNN
+	1    7975 1575
 	1    0    0    -1  
 $EndComp
-Text Notes 7000 2950 0    60   ~ 0
+Text Notes 7575 2975 0    60   ~ 0
 nRF24L01 interface\n+I2C
 $Comp
 L Si2302DS Q1
@@ -335,7 +335,7 @@ L CC C8
 U 1 1 55EC5984
 P 9200 3450
 F 0 "C8" H 9200 3550 40  0000 L CNN
-F 1 "22n" H 9206 3365 40  0000 L CNN
+F 1 "47n" H 9206 3365 40  0000 L CNN
 F 2 "MvdL:C0603" H 9238 3300 30  0001 C CNN
 F 3 "~" H 9200 3450 60  0000 C CNN
 	1    9200 3450
@@ -355,7 +355,7 @@ $EndComp
 Text Label 6050 2200 2    60   ~ 0
 PWM
 Text Label 3300 1700 0    60   ~ 0
-~CS-FL
+~CS0
 Text Label 6050 2500 2    60   ~ 0
 SCK1
 Text Label 6050 2400 2    60   ~ 0
@@ -380,12 +380,12 @@ USART1_RX
 Text Label 3300 2500 0    60   ~ 0
 USART1_CK
 Text Label 3300 2100 0    60   ~ 0
-USART1_CTS
-Text Label 6800 1850 0    60   ~ 0
-USART1_CTS
+WKUP1
+Text Label 7375 1875 0    60   ~ 0
+WKUP1
 Text Label 3300 2200 0    60   ~ 0
 USART1_RTS
-Text Label 6800 2250 0    60   ~ 0
+Text Label 7375 2275 0    60   ~ 0
 USART1_RTS
 Text Label 6050 1600 2    60   ~ 0
 SWCLK
@@ -396,7 +396,7 @@ SDA1
 Text Label 6050 1900 2    60   ~ 0
 SCL1
 Text Label 3300 1800 0    60   ~ 0
-UART1_EN
+~Mute
 $Comp
 L VCC #PWR2
 U 1 1 55EDF925
@@ -444,12 +444,12 @@ $EndComp
 $Comp
 L CONN_01X10 J3
 U 1 1 55EE328F
-P 7800 2000
-F 0 "J3" H 7800 2550 50  0000 C CNN
-F 1 "CONN_01X10" V 7900 2000 50  0000 C CNN
-F 2 "MvdL:HDR_5x2" H 7800 2000 60  0001 C CNN
-F 3 "" H 7800 2000 60  0000 C CNN
-	1    7800 2000
+P 8375 2025
+F 0 "J3" H 8375 2575 50  0000 C CNN
+F 1 "CONN_01X10" V 8475 2025 50  0000 C CNN
+F 2 "MvdL:HDR_5x2" H 8375 2025 60  0001 C CNN
+F 3 "" H 8375 2025 60  0000 C CNN
+	1    8375 2025
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -591,7 +591,7 @@ L RR R?
 U 1 1 5668908E
 P 8950 3450
 F 0 "R?" V 9030 3450 50  0000 C CNN
-F 1 "1k5" V 8875 3450 50  0000 C CNN
+F 1 "d.n.p" V 8875 3450 50  0000 C CNN
 F 2 "MvdL:R0603" H 8950 3450 60  0001 C CNN
 F 3 "" H 8950 3450 60  0000 C CNN
 	1    8950 3450
@@ -647,25 +647,25 @@ Wire Wire Line
 Wire Wire Line
 	5050 4750 5050 4800
 Wire Wire Line
-	7500 2550 7500 1550
+	8075 2575 8075 1575
 Wire Wire Line
-	7500 1550 7600 1550
+	8075 1575 8175 1575
 Wire Wire Line
-	7600 1650 7400 1650
+	8175 1675 7975 1675
 Wire Wire Line
-	7400 1650 7400 1550
+	7975 1675 7975 1575
 Wire Wire Line
-	6800 1750 7600 1750
+	7375 1775 8175 1775
 Wire Wire Line
-	6800 1850 7600 1850
+	7375 1875 8175 1875
 Wire Wire Line
-	6800 1950 7600 1950
+	7375 1975 8175 1975
 Wire Wire Line
-	6800 2050 7600 2050
+	7375 2075 8175 2075
 Wire Wire Line
-	6800 2150 7600 2150
+	7375 2175 8175 2175
 Wire Wire Line
-	6800 2250 7600 2250
+	7375 2275 8175 2275
 Wire Wire Line
 	9200 4250 9200 4350
 Wire Wire Line
@@ -743,9 +743,9 @@ Wire Wire Line
 Wire Wire Line
 	6200 2000 5700 2000
 Wire Wire Line
-	6800 2350 7600 2350
+	7375 2375 8175 2375
 Wire Wire Line
-	7600 2450 6800 2450
+	8175 2475 7375 2475
 Wire Wire Line
 	2450 1800 2450 1850
 Wire Wire Line
@@ -773,8 +773,8 @@ Wire Wire Line
 Wire Wire Line
 	8950 3250 8950 3200
 Connection ~ 9200 3200
-Text Notes 7700 4450 0    60   ~ 0
-replace Q1 by a 1k resistor\nbetween G and D
+Text Notes 7525 4450 0    60   ~ 0
+replace Q1 by a 910 Ohm resistor\nbetween G and D
 Wire Notes Line
 	9050 2700 9400 3100
 Wire Notes Line
@@ -801,8 +801,8 @@ Wire Notes Line
 	9050 4200 9300 3950
 Wire Notes Line
 	9100 3950 9300 4200
-Text Notes 8850 3900 0    60   ~ 0
-1k5
+Text Notes 8800 3900 0    60   ~ 0
+910R
 Wire Notes Line
 	10400 3350 10800 3750
 Wire Notes Line
@@ -819,24 +819,68 @@ Text Notes 9550 3100 0    60   ~ 0
 connect to ground
 Text Notes 9550 3750 0    60   ~ 0
 audio out
-Wire Notes Line
-	9350 3950 9550 3950
-Wire Notes Line
-	9350 4000 9550 4000
-Wire Notes Line
-	9450 3950 9450 3850
-Wire Notes Line
-	9450 3850 9200 3850
-Wire Notes Line
-	9450 4000 9450 4250
-Wire Notes Line
-	9450 4250 9200 4250
-Text Notes 9550 4100 0    60   ~ 0
-10n
 Entry Bus Bus
 	4600 7250 4700 7350
 Text Notes 3150 2700 0    60   ~ 0
 PA0 = WKUP1
 Text Notes 7800 4750 0    60   ~ 0
 Modified circuit for audio output (connect audio amp to audio out)
+Wire Notes Line
+	7375 1875 7175 1875
+Wire Notes Line
+	7175 1875 7175 1925
+Wire Notes Line
+	7175 1925 7125 1950
+Wire Notes Line
+	7125 1950 7225 1975
+Wire Notes Line
+	7225 1975 7125 2000
+Wire Notes Line
+	7125 2000 7225 2025
+Wire Notes Line
+	7225 2025 7125 2050
+Wire Notes Line
+	7125 2050 7225 2075
+Wire Notes Line
+	7225 2075 7175 2100
+Wire Notes Line
+	7175 2100 7175 2550
+Wire Notes Line
+	7125 2550 7225 2550
+Wire Notes Line
+	7125 2550 7175 2600
+Wire Notes Line
+	7175 2600 7225 2550
+Wire Notes Line
+	7375 1775 6975 1775
+Wire Notes Line
+	6975 1775 6975 1900
+Wire Notes Line
+	6975 1900 6925 1925
+Wire Notes Line
+	6925 1925 7025 1950
+Wire Notes Line
+	7025 1950 6925 1975
+Wire Notes Line
+	6925 1975 7025 2000
+Wire Notes Line
+	7025 2000 6925 2025
+Wire Notes Line
+	6925 2025 7025 2050
+Wire Notes Line
+	7025 2050 6925 2075
+Wire Notes Line
+	6925 2075 6975 2100
+Wire Notes Line
+	6975 2100 6975 2550
+Wire Notes Line
+	6925 2550 7025 2550
+Wire Notes Line
+	6925 2550 6975 2600
+Wire Notes Line
+	6975 2600 7025 2550
+Text Notes 6700 1975 0    60   ~ 0
+100k
+Text Notes 7200 2175 0    60   ~ 0
+10k
 $EndSCHEMATC

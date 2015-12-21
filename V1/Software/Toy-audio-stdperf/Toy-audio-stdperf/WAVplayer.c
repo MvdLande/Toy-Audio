@@ -42,7 +42,7 @@ void Start_WAV_Player(WAV_Player_File_8bitMono* WAV_File)
 	sFLASH_StartReadSequence(WAV_File->FileStartAddress + WAV_File->DataStartAddress + WAV_File->DataPointer);
 	InitTIM3GPIO();
 	TIM_Cmd(TIM3, ENABLE);	//Start PWM generator
-	//GPIO_SetBits(GPIOA, GPIO_Pin_4); //Enable Audio Amp
+	//GPIO_SetBits(GPIOF, GPIO_Pin_1); //Enable Audio Amp
 }
 
 uint8_t WAV_Player_GetByte(WAV_Player_File_8bitMono* WAV_File, uint8_t* data)
@@ -56,9 +56,9 @@ uint8_t WAV_Player_GetByte(WAV_Player_File_8bitMono* WAV_File, uint8_t* data)
 		WAV_File->DataPointer++;
 
 		if (WAV_File->DataPointer > 800)
-			GPIO_SetBits(GPIOA, GPIO_Pin_4); //Enable Audio Amp
+			GPIO_SetBits(GPIOF, GPIO_Pin_1); //Enable Audio Amp
 		if (WAV_File->DataPointer > (WAV_File->DataBlockSize - 800))
-			GPIO_ResetBits(GPIOA, GPIO_Pin_4); //Disable Audio Amp
+			GPIO_ResetBits(GPIOF, GPIO_Pin_1); //Disable Audio Amp
 
 		return 1;
 	}

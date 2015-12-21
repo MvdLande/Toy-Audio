@@ -14,8 +14,8 @@
 
   (page A4)
   (layers
-    (0 F.Cu signal hide)
-    (31 B.Cu signal hide)
+    (0 F.Cu signal)
+    (31 B.Cu signal)
     (32 B.Adhes user)
     (33 F.Adhes user)
     (34 B.Paste user)
@@ -63,7 +63,7 @@
     (pad_to_mask_clearance 0)
     (aux_axis_origin 96 103)
     (grid_origin 169 103)
-    (visible_elements 7FFE7FFF)
+    (visible_elements 7FFEFFFF)
     (pcbplotparams
       (layerselection 0x000f0_80000001)
       (usegerberextensions true)
@@ -1004,8 +1004,8 @@
     (effects (font (size 1.5 1.5) (thickness 0.3)))
   )
 
-  (segment (start 97.9 97) (end 97.9 97.55) (width 0.254) (layer B.Cu) (net 1) (status 400000))
-  (segment (start 97.5 97.95) (end 97.5 99) (width 0.254) (layer B.Cu) (net 1) (tstamp 56773488) (status 800000))
+  (segment (start 97.9 97) (end 97.9 97.55) (width 0.254) (layer B.Cu) (net 1))
+  (segment (start 97.5 97.95) (end 97.5 99) (width 0.254) (layer B.Cu) (net 1) (tstamp 56773488))
   (segment (start 97.9 97.55) (end 97.5 97.95) (width 0.254) (layer B.Cu) (net 1) (tstamp 56773487))
   (segment (start 107.575 100) (end 107.575 101.375) (width 0.254) (layer F.Cu) (net 1))
   (segment (start 107.575 101.375) (end 107.5 101.45) (width 0.254) (layer F.Cu) (net 1) (tstamp 56754AFB))

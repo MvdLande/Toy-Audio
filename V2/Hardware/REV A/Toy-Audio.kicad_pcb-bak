@@ -2,11 +2,11 @@
 
   (general
     (links 59)
-    (no_connects 2)
+    (no_connects 0)
     (area 95.849999 88.849999 120.150001 103.150001)
     (thickness 1.6)
     (drawings 9)
-    (tracks 294)
+    (tracks 305)
     (zones 0)
     (modules 25)
     (nets 28)
@@ -14,7 +14,7 @@
 
   (page A4)
   (layers
-    (0 F.Cu signal hide)
+    (0 F.Cu signal)
     (31 B.Cu signal)
     (32 B.Adhes user)
     (33 F.Adhes user)
@@ -63,7 +63,7 @@
     (pad_to_mask_clearance 0)
     (aux_axis_origin 96 103)
     (grid_origin 169 103)
-    (visible_elements 7FFEBFFF)
+    (visible_elements 7FFEFFFF)
     (pcbplotparams
       (layerselection 0x000f0_80000001)
       (usegerberextensions true)
@@ -962,6 +962,9 @@
     (effects (font (size 1.5 1.5) (thickness 0.3)))
   )
 
+  (segment (start 97.1 96.2) (end 97.1 97) (width 0.254) (layer F.Cu) (net 1) (status 400000))
+  (segment (start 97.5 97.4) (end 97.5 99) (width 0.254) (layer F.Cu) (net 1) (tstamp 56772E72) (status 800000))
+  (segment (start 97.1 97) (end 97.5 97.4) (width 0.254) (layer F.Cu) (net 1) (tstamp 56772E71))
   (segment (start 99.9 98.3) (end 99.2 98.3) (width 0.254) (layer B.Cu) (net 1))
   (segment (start 98.5 99) (end 97.5 99) (width 0.254) (layer B.Cu) (net 1) (tstamp 56748E27))
   (segment (start 99.2 98.3) (end 98.5 99) (width 0.254) (layer B.Cu) (net 1) (tstamp 56748E24))
@@ -1228,6 +1231,14 @@
   (segment (start 109.3294 97.9136) (end 110.2019 97.9136) (width 0.1524) (layer B.Cu) (net 24))
   (segment (start 108.875 98.368) (end 109.3294 97.9136) (width 0.1524) (layer F.Cu) (net 24))
   (segment (start 108.875 100) (end 108.875 98.368) (width 0.1524) (layer F.Cu) (net 24))
+  (segment (start 100.15 91.95) (end 100.15 91.45) (width 0.1524) (layer B.Cu) (net 25) (status C00000))
+  (segment (start 100.15 91.45) (end 100 91.3) (width 0.1524) (layer B.Cu) (net 25) (tstamp 56772E67) (status C00000))
+  (segment (start 100 91.3) (end 98.9 91.3) (width 0.1524) (layer B.Cu) (net 25) (tstamp 56772E68) (status 400000))
+  (via (at 98.9 91.3) (size 0.6096) (drill 0.3048) (layers F.Cu B.Cu) (net 25))
+  (segment (start 98.9 91.3) (end 98.9 94) (width 0.1524) (layer F.Cu) (net 25) (tstamp 56772E6B))
+  (segment (start 98.9 94) (end 98.9 95.6) (width 0.1524) (layer F.Cu) (net 25) (tstamp 56772E6C))
+  (segment (start 98.9 95.6) (end 99.1 95.8) (width 0.1524) (layer F.Cu) (net 25) (tstamp 56772E6D) (status 800000))
+  (segment (start 99.1 95.8) (end 99.1 96.2) (width 0.1524) (layer F.Cu) (net 25) (tstamp 56772E6E) (status C00000))
   (segment (start 108.6 98.1) (end 108.6 96.1) (width 0.1524) (layer B.Cu) (net 25))
   (segment (start 110.7 98.2) (end 110.4 98.5) (width 0.1524) (layer B.Cu) (net 25))
   (segment (start 110.4 98.5) (end 109 98.5) (width 0.1524) (layer B.Cu) (net 25) (tstamp 56748ED2))
