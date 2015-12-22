@@ -34,6 +34,7 @@ void Start_WAV_Player(WAV_Player_File_8bitMono* WAV_File)
 	sFLASH_Init();
 	InitAudioGPIO();
 	InitTIM3();
+	sFLASH_ReleasePowerDown();
 	// disable systick timer
 	SysTick->CTRL  &= ~SysTick_CTRL_ENABLE_Msk; //~SysTick_CTRL_TICKINT_Msk;
 	WAV_File->DataBlockSize = GetWAVdataSize(WAV_File);

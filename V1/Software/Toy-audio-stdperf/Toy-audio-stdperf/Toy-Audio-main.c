@@ -168,6 +168,7 @@ void Standby(void)
 	uint32_t i;
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR, ENABLE); 
 	InitButtonGPIO();
+	sFLASH_PowerDown();
 	//DeInitTIM3GPIO();
 	while ((GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == Bit_SET))
 		;  //wait
@@ -223,6 +224,7 @@ int main()
 	SelectHSI(); //8MHz clock
 	SystemCoreClockUpdate(); //Update SystemCoreClock variable to current clock 
 	SysTick_Config(SystemCoreClock / 1000); //Set up a systick interrupt systick clock
+	
 	//Delay(1000);
 	//InitTIM3();
 	//sFLASH_Init();

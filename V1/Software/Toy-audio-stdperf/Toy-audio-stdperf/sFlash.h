@@ -63,6 +63,8 @@
 #define sFLASH_CMD_RDID           0x9F  /*!< Read identification */
 #define sFLASH_CMD_SE             0xD8  /*!< Sector Erase instruction */
 #define sFLASH_CMD_BE             0xC7  /*!< Bulk Erase instruction */
+#define sFLASH_CMD_PD			  0xB9	// Power Down instruction
+#define sFLASH_CMD_RPD			  0xAB	// Release Power Down instruction
 
 #define sFLASH_WIP_FLAG           0x01  /*!< Write In Progress (WIP) flag */
 
@@ -116,6 +118,9 @@
 	void sFLASH_ReadBuffer(uint8_t* pBuffer, uint32_t ReadAddr, uint32_t NumByteToRead);
 	uint32_t sFLASH_ReadID(void);
 	void sFLASH_StartReadSequence(uint32_t ReadAddr);
+void sFLASH_PowerDown(void);
+uint8_t sFLASH_ReleasePowerDown(void);
+
 uint8_t sFLASH_Verify(uint8_t* pBuffer, uint32_t ReadAddr, uint32_t NumByteToRead);
 
 	/**

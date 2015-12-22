@@ -634,6 +634,35 @@ void sFLASH_WriteEnable(void)
 	sFLASH_CS_HIGH();
 }
 
+void sFLASH_PowerDown(void)
+{
+  /*!< Select the FLASH: Chip Select low */
+	sFLASH_CS_LOW();
+
+	  /*!< Send "Power Down" instruction */
+	sFLASH_SendByte(sFLASH_CMD_PD);
+
+	  /*!< Deselect the FLASH: Chip Select high */
+	sFLASH_CS_HIGH();
+}
+uint8_t sFLASH_ReleasePowerDown(void)
+{
+	uint8_t ID;
+	/*!< Select the FLASH: Chip Select low */
+	sFLASH_CS_LOW();
+
+	  /*!< Send "Release Power Down" instruction */
+	sFLASH_SendByte(sFLASH_CMD_RPD);
+	sFLASH_SendByte(sFLASH_DUMMY_BYTE);
+	sFLASH_SendByte(sFLASH_DUMMY_BYTE);
+	sFLASH_SendByte(sFLASH_DUMMY_BYTE);
+	ID = sFLASH_SendByte(sFLASH_DUMMY_BYTE);
+
+	  /*!< Deselect the FLASH: Chip Select high */
+	sFLASH_CS_HIGH();
+}
+
+
 /**
   * @brief  Polls the status of the Write In Progress (WIP) flag in the FLASH's
   *         status register and loop until write opertaion has completed.

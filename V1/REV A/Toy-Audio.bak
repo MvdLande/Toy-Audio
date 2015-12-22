@@ -101,7 +101,7 @@ L XC6206P332MR U1
 U 1 1 55C87310
 P 3100 5100
 F 0 "U1" H 3200 5150 60  0000 C CNN
-F 1 "XC6206P332MR" H 3100 5450 60  0000 C CNN
+F 1 "XC6206P282MR" H 3100 5450 60  0000 C CNN
 F 2 "MvdL:SOT23" H 3100 5050 60  0001 C CNN
 F 3 "" H 3100 5050 60  0000 C CNN
 	1    3100 5100
@@ -760,8 +760,6 @@ Wire Wire Line
 	1400 3950 1400 3550
 Wire Wire Line
 	1400 3550 1600 3550
-Text Notes 9150 2500 0    60   ~ 0
-Optional HPF with 4KHz cutoff to filter \nout the PWM base frequency
 Text Notes 9500 4300 0    60   ~ 0
 d.n.p. = do not place
 Text Notes 1900 4850 0    60   ~ 0
@@ -805,5 +803,5 @@ Wire Notes Line
 Wire Notes Line
 	8875 4475 8925 4425
 Text Notes 8650 4325 0    60   ~ 0
-47k
+12k
 $EndSCHEMATC

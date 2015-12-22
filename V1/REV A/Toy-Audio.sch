@@ -86,7 +86,7 @@ F 3 "~" H 6250 4550 60  0000 C CNN
 $EndComp
 Text Label 5450 4300 0    60   ~ 0
 nCS
-Text Notes 1250 4850 0    60   ~ 0
+Text Notes 900  4675 0    60   ~ 0
 Battery Power
 Text Label 1050 3750 0    60   ~ 0
 SWCLK
@@ -101,7 +101,7 @@ L XC6206P332MR U1
 U 1 1 55C87310
 P 3100 5100
 F 0 "U1" H 3200 5150 60  0000 C CNN
-F 1 "XC6206P332MR" H 3100 5450 60  0000 C CNN
+F 1 "XC6206P282MR" H 3100 5450 60  0000 C CNN
 F 2 "MvdL:SOT23" H 3100 5050 60  0001 C CNN
 F 3 "" H 3100 5050 60  0000 C CNN
 	1    3100 5100
@@ -760,12 +760,10 @@ Wire Wire Line
 	1400 3950 1400 3550
 Wire Wire Line
 	1400 3550 1600 3550
-Text Notes 9150 2500 0    60   ~ 0
-Optional HPF with 4KHz cutoff to filter \nout the PWM base frequency
 Text Notes 9500 4300 0    60   ~ 0
 d.n.p. = do not place
-Text Notes 1900 4850 0    60   ~ 0
-3V
+Text Notes 900  4775 0    60   ~ 0
+4.5V (or 3V)
 Wire Notes Line
 	2650 4850 2650 4600
 Wire Notes Line
@@ -773,7 +771,7 @@ Wire Notes Line
 Wire Notes Line
 	3550 4600 3550 4850
 Text Notes 2200 4450 0    60   ~ 0
-Do not place U1 when using 3V battery power\nbypass pin 2 and 3
+Do not place U1 when using 3V battery power\nbypass pin 2 and 3 with a 0 Ohm resistor
 Wire Notes Line
 	8875 4100 8875 4150
 Wire Notes Line

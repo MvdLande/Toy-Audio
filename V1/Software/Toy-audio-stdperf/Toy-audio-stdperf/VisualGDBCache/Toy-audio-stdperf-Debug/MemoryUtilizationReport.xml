@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <MemoryUtilizationReport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <FLASH>
-    <Used>8744</Used>
+    <Used>8876</Used>
     <Total>16384</Total>
   </FLASH>
   <RAM>
