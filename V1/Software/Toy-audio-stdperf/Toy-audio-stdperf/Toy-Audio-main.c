@@ -227,12 +227,14 @@ int main()
 	
 	//Delay(1000);
 	//InitTIM3();
-	//sFLASH_Init();
-	//sFLASH_BitBangInit();
-	//InitUSART1();
 	
-
+	//sFLASH_BitBangInit();
+	
+	
 /*
+	sFLASH_Init();
+	InitUSART1();
+	sFLASH_ReleasePowerDown();
 	for (;;)
 	{
 		//load music to spi flash
