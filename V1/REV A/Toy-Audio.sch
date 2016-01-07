@@ -37,7 +37,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "Toy Audio V1"
-Date "5 aug 2015"
+Date "2016-01-06"
 Rev "A"
 Comp "Maurits van de Lande (maurits@vandelande.com)"
 Comment1 ""
@@ -278,7 +278,7 @@ L SPEAKER SP1
 U 1 1 55EC5935
 P 10000 3600
 F 0 "SP1" H 9800 3900 60  0000 C CNN
-F 1 "16Ohm" H 9800 3300 60  0000 C CNN
+F 1 "8Ohm" H 9800 3300 60  0000 C CNN
 F 2 "MvdL:JST-PH-2P-DUAL" H 10000 3600 60  0001 C CNN
 F 3 "~" H 10000 3600 60  0000 C CNN
 	1    10000 3600
@@ -324,7 +324,7 @@ L CC C10
 U 1 1 55EC5971
 P 10350 3600
 F 0 "C10" H 10350 3700 40  0000 L CNN
-F 1 "10uF" H 10356 3515 40  0000 L CNN
+F 1 "d.n.p." H 10356 3515 40  0000 L CNN
 F 2 "MvdL:C0603" H 10388 3450 30  0001 C CNN
 F 3 "~" H 10350 3600 60  0000 C CNN
 	1    10350 3600
@@ -490,7 +490,7 @@ L CC C1
 U 1 1 55EE9A00
 P 2450 2000
 F 0 "C1" H 2450 2100 40  0000 L CNN
-F 1 "10u" H 2456 1915 40  0000 L CNN
+F 1 "d.n.p." H 2456 1915 40  0000 L CNN
 F 2 "MvdL:C0603" H 2488 1850 30  0001 C CNN
 F 3 "" H 2450 2000 60  0000 C CNN
 	1    2450 2000
@@ -545,7 +545,7 @@ L CC C5
 U 1 1 55EEED18
 P 3150 1900
 F 0 "C5" V 3200 1750 40  0000 L CNN
-F 1 "100n" V 3300 1850 40  0000 L CNN
+F 1 "d.n.p." V 3300 1850 40  0000 L CNN
 F 2 "MvdL:C0603" H 3188 1750 30  0001 C CNN
 F 3 "" H 3150 1900 60  0000 C CNN
 	1    3150 1900
@@ -614,10 +614,6 @@ F 3 "" H 9550 2650 60  0000 C CNN
 	1    9550 2650
 	1    0    0    -1  
 $EndComp
-Text Notes 9675 2850 0    60   ~ 0
-12R 0.5W
-Text Notes 8925 2325 0    60   ~ 0
-SP1 should be a 32 Ohm speaker. \nWhen using a 16 Ohm Speaker connect\nSP+ trough a 12 Ohm resistor to +BATT
 Text Notes 6500 2150 1    60   ~ 0
 10k
 Wire Wire Line
@@ -702,7 +698,7 @@ Wire Wire Line
 Wire Wire Line
 	9550 3500 9650 3500
 Wire Wire Line
-	9550 3500 9550 3400
+	9550 2650 9550 3500
 Wire Wire Line
 	9550 3400 9200 3400
 Wire Wire Line
@@ -835,30 +831,6 @@ Wire Notes Line
 Wire Wire Line
 	1575 4950 1575 5150
 Connection ~ 1575 5150
-Wire Notes Line
-	9550 2650 9550 2700
-Wire Notes Line
-	9550 2700 9600 2725
-Wire Notes Line
-	9600 2725 9500 2750
-Wire Notes Line
-	9500 2750 9600 2775
-Wire Notes Line
-	9600 2775 9500 2800
-Wire Notes Line
-	9500 2800 9600 2825
-Wire Notes Line
-	9600 2825 9500 2850
-Wire Notes Line
-	9500 2850 9600 2875
-Wire Notes Line
-	9600 2875 9500 2900
-Wire Notes Line
-	9500 2900 9600 2925
-Wire Notes Line
-	9600 2925 9550 2950
-Wire Notes Line
-	9550 2950 9550 3400
 Connection ~ 9550 3400
 Wire Notes Line
 	6800 1850 6575 1850
@@ -911,4 +883,10 @@ F 3 "" H 6575 1550 60  0000 C CNN
 	1    6575 1550
 	1    0    0    -1  
 $EndComp
+Wire Notes Line
+	9050 2925 9350 3300
+Wire Notes Line
+	9050 3300 9350 2925
+Text Notes 9550 4150 0    60   ~ 0
+or 16Ohm\nor 32Ohm
 $EndSCHEMATC

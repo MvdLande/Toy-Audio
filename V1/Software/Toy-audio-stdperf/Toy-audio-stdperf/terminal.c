@@ -105,13 +105,19 @@ void SerialUpload(void)
 void Main_Menu(void)
 {
 	uint8_t key = 0;
-	uint8_t wait = 0;
+	uint16_t wait = 0;
 
 	  /* Test if any sector of Flash memory where user application will be loaded is write protected */
 	//FlashProtection = FLASH_If_GetWriteProtectionStatus();
 	//Terminal_cls();
-	while (1)
+	// exit the funtion after 5 minutes
+	while (wait < 60*5*10) // (60 seconds * 5 minutes * 10 iterations per second)
 	{
+		wait++;
+		//
+		sFLASH_Init();
+		sFLASH_ReleasePowerDown();
+		
 		uint32_t sFLASH_ID;
 		uint8_t array[]  = "\0\0\0\0\0\0\0\0\0\0";
 
@@ -122,12 +128,13 @@ void Main_Menu(void)
 		SerialPutString("  Get WAV data length ---------- 4\r\n\n");
 		SerialPutString("  Print filename from SPI Flash  5\r\n\n");
 		SerialPutString("  Bulk erase SPI Flash --------- 6\r\n\n");
+		SerialPutString("  Exit and play Song ----------- 7\r\n\n");
 
-		    /* Clean the input path */
-		//__HAL_UART_SEND_REQ(&huart1, UART_RXDATA_FLUSH_REQUEST);
+		// Clear the input path 
 		USART_RequestCmd(USART1, USART_Request_SBKRQ, ENABLE);
 	
 		// Receive key
+
 		key = GetKey();
 
 		switch (key)
@@ -173,10 +180,14 @@ void Main_Menu(void)
 			Delay(3000);
 			SerialPutString("SPI Flash bulk erase finished...  \n");
 			break;
+		case '7':
+			wait = 1000; // exit this loop
+			break;
 		default:
-			SerialPutString("Invalid Number ! ==> The number should be either 1, 2, 3, 4,5 or 6\r");
+			SerialPutString("Invalid Number ! ==> The number should be either 1, 2, 3, 4, 5, 6 or 7\r");
 			break;
 		}
+		Delay(100); // wait 0.1s
 	}
 }
 

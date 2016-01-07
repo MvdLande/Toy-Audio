@@ -30,7 +30,7 @@ void Start_WAV_Player(WAV_Player_File_8bitMono* WAV_File)
 {	
 	SelectHSI(); //8MHz clock
 	SystemCoreClockUpdate(); //Update SystemCoreClock variable to current clock 
-	SysTick_Config(SystemCoreClock / 1000); //Set up a systick interrupt systick clock
+	SysTick_Config(SystemCoreClock / 100); //Set up a systick interrupt systick clock every 10ms
 	sFLASH_Init();
 	InitAudioGPIO();
 	InitTIM3();

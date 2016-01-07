@@ -51,7 +51,7 @@ typedef enum {
 
 void SysTick_Handler(void) {
 	Milliseconds++; //Increment millisecond variable
-	if (Milliseconds % 1000 == 999) { //If 1000 milliseconds have passed, increment seconds
+	if (Milliseconds % 100 == 999) { //If 100 x 10 milliseconds have passed, increment seconds
 		Seconds++;
 	}
 }
@@ -59,10 +59,20 @@ void SysTick_Handler(void) {
 
 void Delay(uint32_t MilS) 
 	{
+	// systick is configured for a 10ms delay 
 	uint32_t MSStart = Milliseconds;
-		while ((Milliseconds - MSStart) < MilS) 
-			Sleep(); //wait for a (systick) interrupt
-			//asm("nop");
+		if (MilS > 9)
+		{
+			while ((Milliseconds - MSStart) < MilS / 10) 
+				Sleep(); //wait for a (systick) interrupt
+				//asm("nop");
+		}
+		else
+		{
+			while ((Milliseconds - MSStart) < 1) 
+				Sleep(); //wait for a (systick) interrupt
+				//asm("nop");
+		}
 }
 
 //Delay function for second delay 
@@ -223,24 +233,16 @@ int main()
 	InitButtonGPIO();
 	SelectHSI(); //8MHz clock
 	SystemCoreClockUpdate(); //Update SystemCoreClock variable to current clock 
-	SysTick_Config(SystemCoreClock / 1000); //Set up a systick interrupt systick clock
-	
+	SysTick_Config(SystemCoreClock / 100); //Set up a systick interrupt systick clock
+	InitUSART1();
+	// Clear the input path 
+	USART_RequestCmd(USART1, USART_Request_SBKRQ, ENABLE);
 	//Delay(1000);
 	//InitTIM3();
 	
 	//sFLASH_BitBangInit();
 	
 	
-/*
-	sFLASH_Init();
-	InitUSART1();
-	sFLASH_ReleasePowerDown();
-	for (;;)
-	{
-		//load music to spi flash
-		Main_Menu();
-	}
-*/
 	//RTC_RefClockCmd(ENABLE); // The RTC registers are used to store the song status
 	  /* Enable the PWR clock */
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR, ENABLE);
@@ -281,6 +283,29 @@ int main()
 	//RCC_RTCCLKCmd(DISABLE);
 	for (;;)
 	{
+		// check for Serial data
+		if (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) != RESET)
+		{
+			TIM_Cmd(TIM3, DISABLE);				//Stop PWM generator
+			DeInitTIM3GPIO();
+	
+			// enable systick timer
+			SystemCoreClockUpdate(); //Update SystemCoreClock variable to current clock 
+			SysTick_Config(SystemCoreClock / 100); //Set up a systick interrupt systick clock
+
+			// Clear the input path 
+			USART_RequestCmd(USART1, USART_Request_SBKRQ, ENABLE);
+			//load music to spi flash
+			Main_Menu();
+			// start song again
+			if ((RTC->CR & RTC_CR_FMT) == RTC_CR_FMT)
+				State = waitingfor1; // Enlish song
+			else
+				State = waitingfor2; // Dutch song
+			Delay(100);
+			// Clear the input path 
+			USART_RequestCmd(USART1, USART_Request_SBKRQ, ENABLE);
+		}
 		if (WAV_DataPending == 1)
 		{
 			if (State == playing1 || State == playing2)
@@ -379,7 +404,7 @@ int main()
 			aWAV_File.FileStartAddress = WAV_FILE_ADDRESS;
 			Start_WAV_Player(&aWAV_File);
 		}
-
+		
 		//Sleep();
 	}
 }
