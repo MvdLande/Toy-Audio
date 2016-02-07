@@ -167,6 +167,9 @@
 #ifndef __DEC32_EPSILON__
 #define __DEC32_EPSILON__ 1E-6DF
 #endif
+#ifndef __OPTIMIZE__
+#define __OPTIMIZE__ 1
+#endif
 #ifndef __CHAR_UNSIGNED__
 #define __CHAR_UNSIGNED__ 1
 #endif
@@ -480,9 +483,6 @@
 #ifndef __UHA_FBIT__
 #define __UHA_FBIT__ 8
 #endif
-#ifndef __NO_INLINE__
-#define __NO_INLINE__ 1
-#endif
 #ifndef __SFRACT_MIN__
 #define __SFRACT_MIN__ (-0.5HR-0.5HR)
 #endif
@@ -493,7 +493,7 @@
 #define __FLT_MANT_DIG__ 24
 #endif
 #ifndef __VERSION__
-#define __VERSION__ "5.2.0"
+#define __VERSION__ "5.3.0"
 #endif
 #ifndef __ULLFRACT_FBIT__
 #define __ULLFRACT_FBIT__ 64
@@ -563,6 +563,9 @@
 #endif
 #ifndef __UDQ_FBIT__
 #define __UDQ_FBIT__ 64
+#endif
+#ifndef DEBUG
+#define DEBUG 1
 #endif
 #ifndef __INT8_TYPE__
 #define __INT8_TYPE__ signed char
@@ -915,9 +918,6 @@
 #ifndef __SIZEOF_DOUBLE__
 #define __SIZEOF_DOUBLE__ 8
 #endif
-#ifndef Debug
-#define Debug 1
-#endif
 #ifndef __UFRACT_EPSILON__
 #define __UFRACT_EPSILON__ 0x1P-16UR
 #endif
@@ -931,7 +931,7 @@
 #define __ATOMIC_CONSUME 1
 #endif
 #ifndef __GNUC_MINOR__
-#define __GNUC_MINOR__ 2
+#define __GNUC_MINOR__ 3
 #endif
 #ifndef __UINTMAX_MAX__
 #define __UINTMAX_MAX__ 0xffffffffffffffffULL
@@ -1040,21 +1040,21 @@
 //$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32F0xxxx/CMSIS_StdPeriph/Device/ST/STM32F0xx/Include
 //$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32F0xxxx/CMSIS_StdPeriph/Include
 //$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32F0xxxx/CMSIS_StdPeriph/RTOS
-//c:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/5.2.0/../../../../arm-eabi/include/c++/5.2.0
-//c:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/5.2.0/../../../../arm-eabi/include/c++/5.2.0/arm-eabi/thumb/cortex_m0
-//c:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/5.2.0/../../../../arm-eabi/include/c++/5.2.0/backward
-//c:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/5.2.0/include
-//c:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/5.2.0/include-fixed
-//c:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/5.2.0/../../../../arm-eabi/sys-include
-//c:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/5.2.0/../../../../arm-eabi/include
+//c:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/5.3.0/../../../../arm-eabi/include/c++/5.3.0
+//c:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/5.3.0/../../../../arm-eabi/include/c++/5.3.0/arm-eabi/thumb/cortex_m0
+//c:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/5.3.0/../../../../arm-eabi/include/c++/5.3.0/backward
+//c:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/5.3.0/include
+//c:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/5.3.0/include-fixed
+//c:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/5.3.0/../../../../arm-eabi/sys-include
+//c:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/5.3.0/../../../../arm-eabi/include
 // --- Include directories end --- //
 
 
 // --- Library directories begin --- //
-//c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-eabi/5.2.0/thumb/cortex_m0/
-//c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-eabi/5.2.0/../../../../arm-eabi/lib/thumb/cortex_m0/
-//c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-eabi/5.2.0/
+//c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-eabi/5.3.0/thumb/cortex_m0/
+//c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-eabi/5.3.0/../../../../arm-eabi/lib/thumb/cortex_m0/
+//c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-eabi/5.3.0/
 //c:/sysgcc/arm-eabi/bin/../lib/gcc/
-//c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-eabi/5.2.0/../../../../arm-eabi/lib/
+//c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-eabi/5.3.0/../../../../arm-eabi/lib/
 // --- Library directories begin --- //
 

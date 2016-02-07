@@ -28,9 +28,8 @@ uint32_t GetWAVdataSize(WAV_Player_File_8bitMono* WAV_File)
 
 void Start_WAV_Player(WAV_Player_File_8bitMono* WAV_File)
 {	
-	SelectHSI(); //8MHz clock
-	SystemCoreClockUpdate(); //Update SystemCoreClock variable to current clock 
-	SysTick_Config(SystemCoreClock / 100); //Set up a systick interrupt systick clock every 10ms
+	//SelectHSI(); //8MHz clock
+	Systick_Enable();
 	sFLASH_Init();
 	InitAudioGPIO();
 	InitTIM3();

@@ -1,6 +1,13 @@
 
 #include "common.h"
 
+void Systick_Enable(void)
+{
+	// enable systick timer
+	SystemCoreClockUpdate(); //Update SystemCoreClock variable to current clock 
+	SysTick_Config(SystemCoreClock / 100); //Set up a systick interrupt systick clock
+}
+
 
 /**
   * @brief  Receive byte from sender

@@ -37,7 +37,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "Toy Audio V1"
-Date "5 aug 2015"
+Date "2016-02-07"
 Rev "A.1"
 Comp "Maurits van de Lande (maurits@vandelande.com)"
 Comment1 ""
@@ -86,7 +86,7 @@ F 3 "~" H 6250 4550 60  0000 C CNN
 $EndComp
 Text Label 5450 4300 0    60   ~ 0
 ~CS0
-Text Notes 1250 4850 0    60   ~ 0
+Text Notes 650  4700 0    60   ~ 0
 Battery Power
 Text Label 1050 3750 0    60   ~ 0
 SWCLK
@@ -302,7 +302,7 @@ L RR R3
 U 1 1 55EC5964
 P 9200 2900
 F 0 "R3" V 9280 2900 50  0000 C CNN
-F 1 "DNP" V 9125 2900 50  0000 C CNN
+F 1 "0R" V 9125 2900 50  0000 C CNN
 F 2 "MvdL:R0603" H 9200 2900 60  0001 C CNN
 F 3 "" H 9200 2900 60  0000 C CNN
 	1    9200 2900
@@ -428,17 +428,6 @@ F 1 "VDD" H 6200 1900 50  0000 C CNN
 F 2 "" H 6200 1750 60  0000 C CNN
 F 3 "" H 6200 1750 60  0000 C CNN
 	1    6200 1750
-	1    0    0    -1  
-$EndComp
-$Comp
-L VCC #PWR22
-U 1 1 55EE2A6B
-P 9200 2650
-F 0 "#PWR22" H 9200 2500 50  0001 C CNN
-F 1 "VCC" H 9200 2800 50  0000 C CNN
-F 2 "" H 9200 2650 60  0000 C CNN
-F 3 "" H 9200 2650 60  0000 C CNN
-	1    9200 2650
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -573,8 +562,6 @@ F 3 "" H 5800 3650 60  0000 C CNN
 	1    5800 3650
 	1    0    0    -1  
 $EndComp
-Text Notes 7400 3900 0    60   ~ 0
-LPF with 4KHz cutoff to filter \nout the PWM base frequency
 $Comp
 L CONN_01X02 SP1
 U 1 1 56688C9F
@@ -600,7 +587,7 @@ $EndComp
 Wire Wire Line
 	2500 5300 2500 5200
 Wire Wire Line
-	1450 5300 1450 4950
+	1450 4650 1450 5300
 Wire Wire Line
 	1450 4950 1250 4950
 Wire Wire Line
@@ -773,58 +760,12 @@ Wire Wire Line
 Wire Wire Line
 	8950 3250 8950 3200
 Connection ~ 9200 3200
-Text Notes 7525 4450 0    60   ~ 0
-replace Q1 by a 910 Ohm resistor\nbetween G and D
-Wire Notes Line
-	9050 2700 9400 3100
-Wire Notes Line
-	9500 2800 9000 3000
-Wire Notes Line
-	8950 4000 8950 3950
-Wire Notes Line
-	8950 3950 9000 4000
-Wire Notes Line
-	9000 4000 9000 3900
-Wire Notes Line
-	9000 3900 9050 3950
-Wire Notes Line
-	9050 3950 9050 3850
-Wire Notes Line
-	9050 3850 9100 3900
-Wire Notes Line
-	9100 3900 9100 3850
-Wire Notes Line
-	9100 3850 9200 3800
-Wire Notes Line
-	8950 4000 8850 4100
-Wire Notes Line
-	9050 4200 9300 3950
-Wire Notes Line
-	9100 3950 9300 4200
-Text Notes 8800 3900 0    60   ~ 0
-910R
 Wire Notes Line
 	10400 3350 10800 3750
 Wire Notes Line
 	10800 3400 10400 3700
-Wire Notes Line
-	10000 3150 10600 3800
-Wire Wire Line
-	8950 3200 9450 3200
-Wire Notes Line
-	9200 3200 9250 3150
-Wire Notes Line
-	9250 3150 10000 3150
-Text Notes 9550 3100 0    60   ~ 0
-connect to ground
-Text Notes 9550 3750 0    60   ~ 0
-audio out
-Entry Bus Bus
-	4600 7250 4700 7350
 Text Notes 3150 2700 0    60   ~ 0
 PA0 = WKUP1
-Text Notes 7800 4750 0    60   ~ 0
-Modified circuit for audio output (connect audio amp to audio out)
 Wire Notes Line
 	7375 1875 7175 1875
 Wire Notes Line
@@ -851,36 +792,69 @@ Wire Notes Line
 	7125 2550 7175 2600
 Wire Notes Line
 	7175 2600 7225 2550
-Wire Notes Line
-	7375 1775 6975 1775
-Wire Notes Line
-	6975 1775 6975 1900
-Wire Notes Line
-	6975 1900 6925 1925
-Wire Notes Line
-	6925 1925 7025 1950
-Wire Notes Line
-	7025 1950 6925 1975
-Wire Notes Line
-	6925 1975 7025 2000
-Wire Notes Line
-	7025 2000 6925 2025
-Wire Notes Line
-	6925 2025 7025 2050
-Wire Notes Line
-	7025 2050 6925 2075
-Wire Notes Line
-	6925 2075 6975 2100
-Wire Notes Line
-	6975 2100 6975 2550
-Wire Notes Line
-	6925 2550 7025 2550
-Wire Notes Line
-	6925 2550 6975 2600
-Wire Notes Line
-	6975 2600 7025 2550
-Text Notes 6700 1975 0    60   ~ 0
-100k
 Text Notes 7200 2175 0    60   ~ 0
 10k
+Wire Wire Line
+	8950 3200 9450 3200
+Wire Notes Line
+	8800 3200 9300 3600
+Wire Notes Line
+	9350 3300 8800 3600
+Wire Notes Line
+	8850 4100 8850 4250
+Wire Notes Line
+	8850 4250 8800 4300
+Wire Notes Line
+	8800 4300 8900 4350
+Wire Notes Line
+	8900 4350 8800 4400
+Wire Notes Line
+	8800 4400 8900 4450
+Wire Notes Line
+	8900 4450 8800 4500
+Wire Notes Line
+	8800 4500 8900 4550
+Wire Notes Line
+	8900 4550 8850 4600
+Wire Notes Line
+	8850 4600 8850 4700
+Wire Notes Line
+	8800 4700 8900 4700
+Wire Notes Line
+	8800 4700 8850 4750
+Wire Notes Line
+	8850 4750 8900 4700
+Text Notes 8550 4450 0    60   ~ 0
+100k
+$Comp
+L +BATT #PWR?
+U 1 1 56B7E010
+P 9200 2650
+F 0 "#PWR?" H 9200 2500 50  0001 C CNN
+F 1 "+BATT" H 9200 2790 50  0000 C CNN
+F 2 "" H 9200 2650 50  0000 C CNN
+F 3 "" H 9200 2650 50  0000 C CNN
+	1    9200 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L +BATT #PWR?
+U 1 1 56B7E196
+P 1450 4650
+F 0 "#PWR?" H 1450 4500 50  0001 C CNN
+F 1 "+BATT" H 1450 4790 50  0000 C CNN
+F 2 "" H 1450 4650 50  0000 C CNN
+F 3 "" H 1450 4650 50  0000 C CNN
+	1    1450 4650
+	1    0    0    -1  
+$EndComp
+Connection ~ 1450 4950
+Wire Notes Line
+	3050 1750 3250 2000
+Wire Notes Line
+	3250 1750 3050 2000
+Wire Notes Line
+	2250 1800 2650 2100
+Wire Notes Line
+	2650 1800 2250 2100
 $EndSCHEMATC

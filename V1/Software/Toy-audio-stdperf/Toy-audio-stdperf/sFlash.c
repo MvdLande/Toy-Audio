@@ -66,7 +66,7 @@ uint8_t SPI_Transfer8(uint8_t byte)
 		
 		sFLASH_CLK_LOW();	
 		// Prepare MOSI bit
-		if ((byte >> i) & 0x01 == 0x01)
+		if (((byte >> i) & 0x01) == 0x01)
 			sFLASH_MOSI_HIGH();
 		else
 			sFLASH_MOSI_LOW();
@@ -585,12 +585,16 @@ uint8_t sFLASH_SendByte(uint8_t byte)
 	//return SPI_Transfer8(byte);
 	SPI_SendData8(SPI1, byte);
 
-	//Wait to receive a byte 
+
+		//Loop while DR register in not emplty 
+	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET)
+		;
+		//Wait to receive a byte 
 	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == RESET)
 		;
-
 	// Return the byte read from the SPI bus 
 	return SPI_ReceiveData8(SPI1);	//Returns the most recent received data by the SPIx/I2Sx peripheral. 
+
 }
 
 

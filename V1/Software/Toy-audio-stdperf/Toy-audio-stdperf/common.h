@@ -52,3 +52,5 @@ void DelaySec(uint32_t S);
 //Define time keeping variables
 extern volatile uint32_t Milliseconds, Seconds;
 
+void Systick_Enable(void);
+

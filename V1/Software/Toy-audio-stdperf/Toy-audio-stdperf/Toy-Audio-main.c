@@ -8,7 +8,7 @@
 #include "usart.h"
 #include "common.h"
 #include "Terminal.h"
-#include "ok-sound.h"
+//#include "ok-sound.h"
 #include "stm32f0xx_pwr.h"
 #include "stm32f0xx_dbgmcu.h"
 #include "stm32f0xx_rtc.h"
@@ -232,8 +232,7 @@ int main()
 	InitAudioGPIO();
 	InitButtonGPIO();
 	SelectHSI(); //8MHz clock
-	SystemCoreClockUpdate(); //Update SystemCoreClock variable to current clock 
-	SysTick_Config(SystemCoreClock / 100); //Set up a systick interrupt systick clock
+	Systick_Enable();
 	InitUSART1();
 	// Clear the input path 
 	USART_RequestCmd(USART1, USART_Request_SBKRQ, ENABLE);
@@ -289,9 +288,7 @@ int main()
 			TIM_Cmd(TIM3, DISABLE);				//Stop PWM generator
 			DeInitTIM3GPIO();
 	
-			// enable systick timer
-			SystemCoreClockUpdate(); //Update SystemCoreClock variable to current clock 
-			SysTick_Config(SystemCoreClock / 100); //Set up a systick interrupt systick clock
+			Systick_Enable();
 
 			// Clear the input path 
 			USART_RequestCmd(USART1, USART_Request_SBKRQ, ENABLE);
